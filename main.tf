@@ -54,6 +54,7 @@ resource "aws_launch_configuration" "wireguard_launch_config" {
   user_data                   = data.template_file.user_data.rendered
   security_groups             = local.security_groups_ids
   associate_public_ip_address = (var.eip_id != "disabled" ? true : false)
+  monitoring                  = false
 
   lifecycle {
     create_before_destroy = true
